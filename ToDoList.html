@@ -6,7 +6,7 @@
     <title>Welcome to your toDo list</title>
     <link href="_css/camel.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body onload="startTime(); setInterval('startTime()', 1000)">
 <header id="header">
     <h3>ToDo List</h3>
         <div>
@@ -23,7 +23,7 @@
              <label class="todo-label" for="newTaskEntry">ToDo list</label>
          </div>
         <textarea  placeholder="Please enter your task..." id="newTaskEntry"></textarea>
-        <input type="button" id="submit" value="Add">
+        <input type="button" id="submit" value="Add" onclick="displayTask()">
          <div style="clear:both"></div>
     </div>
          <div id="clear"></div>
@@ -49,10 +49,6 @@
     </p>
 </div>
 <script src="script.js"></script>
-<script src="utils.js"></script>
-<script src="watch.js"></script>
-<script src="todolist.js"></script>
-<script src="init.js"></script>
 </body>
 </html>
 

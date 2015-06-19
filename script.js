@@ -19,6 +19,7 @@ function retrieveTask() {
 			taskCell = row.insertCell(0),
 			checkBoxCell = row.insertCell(1),
 			deleteCell = row.insertCell(2),
+			newTask = document.getElementById("newTaskEntry").value,
 			text = document.createTextNode(newTask),
 			newCheckBox = createNewCheckBox(),
 			deleteBtn = createNewDeleteButton(row);
@@ -194,4 +195,4 @@ function disableTaskEntry(){
 }
 
 
-jjjj
+
