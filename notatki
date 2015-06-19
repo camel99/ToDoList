@@ -1,0 +1,51 @@
+pytania:
+warning message usunąc parentChildRemove jak juz warning message istnieje
+2. w metodzie createNewCheckBox(paragraph) nalezy usunąć apendowanie i wtedy wywolac ta metode w tej nowo utworzonej komorce
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#main{
+width:60%;
+border:solid black 4px blue;
+}
+#container{
+width:30%;
+height: 200px;
+padding:15px;
+border: solid red 4px;
+
+}
+#strona{
+    background-color: lightblue;
+    border:black solid 4px;
+    position:relative;
+}
+#moj{
+    background-color: lightblue;
+    border:black solid 4px;
+    position:relative;
+    float:right;
+    top: 10%;
+    width:35%;
+
+}
+</style>
+</head>
+<body>
+<div id="main">
+ <div id="container">
+  <div id="strona">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut      labore et dolore magna aliqua.</div>
+  <div id="moj"> cos tu wpisalem </div>
+ </div>
+</div>
+</body>
+</html>
+
+
+
+2. nie dziala przekreslanie
+3. nie dziala zerowanie countera - wywolanie countRows w create delete button?
+4. jak rozbic create deletButton na create i delete row?
+5. jak sa 4 wiersze to jest disabled ale jak odblokowac jak jest mniej niz 4?
+6. nie dodwac pustych wierszy?

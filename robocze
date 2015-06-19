@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+/*
+ * Create rows for task outcome
+ */
+function createRows() {
+	var table = document.getElementById("outcomeTable"),
+		row = table.insertRow(0),
+		task = row.insertCell(0),
+		checkBoxBtn = row.insertCell(1),
+		deleteBtn = row.insertCell(2);
+	row.className = 'outcomeRow';
+	task.className = 'outcomeNote';
+	checkBoxBtn.className = 'outcomeCheckBox';
+	deleteBtn.className = 'outcomeDelete';
+	task.innerHTML = "task";
+	deleteBtn.innerHTML = "Delete button";
+}
+
+
+// to probowalem zastosowac doddowania wielu task?w
+function createNewParagraph(){
+	var paragraph = document.createElement("LI");
+	paragraph.setAttribute("class", "newTaskEntry");
+	paragraph.setAttribute("nextElement", "newElement");
+	var text = document.createTextNode("doopa");
+	paragraph.appendChild(text);
+	document.getElementById("how").appendChild(paragraph);
+}

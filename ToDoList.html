@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Welcome to your toDo list</title>
+    <link href="_css/camel.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<header id="header">
+    <h3>ToDo List</h3>
+        <div>
+            <span id="currentTime"></span>
+
+        </div>
+    <div class="clear"></div>
+</header>
+<div class="mainContainer">
+    <div id="form">
+     <form action="ToDoList.html">
+     <div id="todoList">
+         <div id="toDoLabel">
+             <label class="todo-label" for="newTaskEntry">ToDo list</label>
+         </div>
+        <textarea  placeholder="Please enter your task..." id="newTaskEntry"></textarea>
+        <input type="button" id="submit" value="Add">
+         <div style="clear:both"></div>
+    </div>
+         <div id="clear"></div>
+         <div class="outcomeTable">
+             <table id="outcomeTable">
+             </table>
+         </div>
+         </form>
+        </div>
+
+    </div>
+    <h1 id="what" >
+        <p id="how">
+            <input type="button" id="removeAllTask" value="remove all" onclick="removeAllTasks()">
+        </p>
+    </h1>
+    <p id="countRows" onclick="clearWarningMessage()"></p>
+</div>
+
+<div class="footer">
+    <p id="footerMessage">
+        Camel creative technology 
+    </p>
+</div>
+<script src="script.js"></script>
+<script src="utils.js"></script>
+<script src="watch.js"></script>
+<script src="todolist.js"></script>
+<script src="init.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
