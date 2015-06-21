@@ -44,8 +44,9 @@ border: solid red 4px;
 
 
 
-2. nie dziala przekreslanie
-3. nie dziala zerowanie countera - wywolanie countRows w create delete button?
 4. jak rozbic create deletButton na create i delete row?
 5. jak sa 4 wiersze to jest disabled ale jak odblokowac jak jest mniej niz 4?
-6. nie dodwac pustych wierszy?
+6. nie dziala jQuery wszystko np. animate?
+7 jak zmienic wyglad footera
+- dlaczego nie moge wywolac metody geTdetails po kliknieciu w info
+- jak zrobic kolejny wiersz i do niego wrzucic div a detailsami

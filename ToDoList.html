@@ -2,19 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Welcome to your toDo list</title>
     <link href="_css/camel.css" rel="stylesheet" type="text/css"/>
 </head>
-<body onload="startTime(); setInterval('startTime()', 1000)">
+<body id="body" onload="startTime(); setInterval('startTime()', 1000)">
 <header id="header">
     <h3>ToDo List</h3>
         <div>
             <span id="currentTime"></span>
-
         </div>
     <div class="clear"></div>
 </header>
+<div id="details"></div>
 <div class="mainContainer">
     <div id="form">
      <form action="ToDoList.html">
@@ -33,22 +42,21 @@
          </div>
          </form>
         </div>
-
     </div>
-    <h1 id="what" >
-        <p id="how">
-            <input type="button" id="removeAllTask" value="remove all" onclick="removeAllTasks()">
-        </p>
-    </h1>
-    <p id="countRows" onclick="clearWarningMessage()"></p>
+<div>
+    <input type="button" id="tester" value="tester">
 </div>
-
-<div class="footer">
-    <p id="footerMessage">
-        Camel creative technology 
+<h1 id="what" >
+    <p id="how">
+        <input type="button" id="removeAllTask" value="remove all" onclick="removeAllTasks()">
     </p>
+</h1>
+<p id="countRows"></p>
+<div class="footer">
+    <p id="footerMessage">Camel creative technology</p>
 </div>
 <script src="script.js"></script>
+<script src="jQuery.js"></script>
 </body>
 </html>
 

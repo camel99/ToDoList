@@ -57,7 +57,7 @@ My style
 */
 @font-face {
     font-family:taskOutcomeFont;
-    src:url("../fonts/palitoon.otf")
+    src:url("../fonts/typewcond_regular.otf")
 }
 
 html, body {
@@ -66,7 +66,7 @@ html, body {
     margin: 0;
     height: 100%;
     width: 100%;
-    overflow: visible;
+    overflow: auto;
     background: #F1F1F1;
     position:fixed;
     padding: 0;
@@ -92,9 +92,10 @@ html, body {
 }
 #currentTime{
     float: right;
-    padding: 40px;
     color: #BEBEBE;
     font-size: 25px;
+    box-sizing: border-box;
+    margin-right: 20px;
 }
 .mainContainer{
     border: ridge #ACACAC 1px;
@@ -140,6 +141,7 @@ html, body {
     text-align: center;
     float:right;
     margin-top: 10px;
+    box-sizing: border-box;
 }
 
 .footer {
@@ -155,6 +157,7 @@ html, body {
     float: right;
     margin-top: 20%;
     margin-right: 10%;
+    position: relative;
 }
 
 #newTaskEntry:active {
@@ -165,6 +168,7 @@ html, body {
 
 .newTaskEntry {
     width: 100%;
+    resize: both;
 }
 #clear{
     clear: both;
@@ -198,8 +202,36 @@ html, body {
     cursor: pointer;
     position: relative;
 }
+[class="fa fa-info-circle fa-2x"]{
+    border-bottom: solid #CFCFD8 2px;
+    width: 100%;
+    opacity: 0px;
+    padding: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
 #newTaskEntry[disabled]{
     -webkit-box-shadow: inset -2px -2px 91px -3px rgba(0, 0, 0, 1);
     -moz-box-shadow: inset -2px -2px 91px -3px rgba(0, 0, 0, 1);
     box-shadow: inset -2px -2px 91px -3px rgb(231, 231, 231));
+}
+
+#taskDetails{
+    border: solid white 3px;
+    height: 30px;
+    width: 20%;
+    position: absolute;
+    top: 0;
+}
+.newTaskEntry:hover{
+    background: #F0F0F0;
+    cursor: pointer;
+}
+
+[class="alert alert-info"] {
+    display: none;
+
+    width:100%;
+
 }
