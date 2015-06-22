@@ -1,6 +1,3 @@
-/**
- * Created by roberthilscher on 19.06.15.
- */
 
 var app = app || {};
 
