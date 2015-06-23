@@ -12,25 +12,60 @@ var newEntry = {
 
        if (newTask.length != 0) {
           var row = table.insertRow(0),
-            taskCell = row.insertCell(0),
-            checkBoxCell = row.insertCell(1),
-            deleteCell = row.insertCell(2),
-            text = document.createTextNode(newTask.value),
-            newCheckBox = pageElements.createNewCheckBox(),
-            deleteBtn = pageElements.createNewDeleteButton(row);
-        row.className = 'newTaskEntry';
-        taskCell.className = 'taskOutcome';
-        checkBoxCell.className = 'checkBoxOutcome';
-        deleteCell.className = 'deleteOutcome';
+          task = row.insertCell(0),
+          taskInfo = row.insertCell(1),
+          checkBox = row.insertCell(2),
+          removeTask = row.insertCell(3),
+          text = document.createTextNode(newTask.value),
+          newCheckBox = pageElements.createNewCheckBox(),
+          removeBtn = createNewDeleteButton(row);
+          row.className = 'newTaskEntry';
+          task.className = 'taskOutcome';
+          taskInfo.className = 'fa fa-info-circle fa-2x';
+          taskInfo.id = 'info' + getRowsAmount();
+          checkBox.className = 'checkBoxOutcome';
+          removeTask.className = 'deleteOutcome';
 
-        taskCell.appendChild(text);
-        checkBoxCell.appendChild(newCheckBox);
-        deleteCell.appendChild(deleteBtn);
+           task.appendChild(text);
+           checkBox.appendChild(newCheckBox);
+           removeTask.appendChild(removeBtn);
+           var info = this.getTaskDetails();
 
         return row;
       }
 
     },
+    getTaskDetails:function() {
+    var taskDetail = document.createElement('div');
+    taskDetail.className = "alert alert-info";
+    taskDetail.id = 'detail' + getRowsAmount();
+    var currentDate = this.currentDatum();
+    var message = document.createTextNode('Task created: ' + currentDate);
+    taskDetail.appendChild(message);
+    console.log(taskDetail);
+    var row = pageElements.getRowsAmount();
+    var parent = document.querySelector("#rowNumber_" + row);
+    parent.appendChild(taskDetail);
+
+},
+    currentDatum:function() {
+    function leadingZero(i) {
+        return (i < 10) ? '0' + i : i;
+    }
+    var daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var monthMapping = ["Jan.", "Feb.", "Mar", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+    var curDate = new Date(),
+        year = curDate.getFullYear(),
+        month = curDate.getMonth(),
+        dayNo = leadingZero(curDate.getDate()),
+        day = curDate.getDay(),
+        hour = leadingZero(curDate.getHours()),
+        min = leadingZero(curDate.getMinutes()),
+        sec = leadingZero(curDate.getSeconds()),
+        full = daysMapping[day] + ", " + dayNo + "-" + monthMapping[month] + "-" + year + " " + hour + ":" + min + ":" + sec;
+
+    return full;
+},
   removeAllTasks: function (){
       var parent = document.getElementById('outcomeTable');
       while (parent.firstChild) {
