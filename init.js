@@ -1,15 +1,14 @@
 window.onload = function () {
-/*
-  var watchEl = document.getElementById('currentTime'),
-    textarea = document.getElementById('newTaskEntry'),
-    addButton =  document.getElementById('submit');
-
-  app.todolist.init(textarea, addButton);
-  app.todolist.bindEvents();
-  app.watch.initWatch(watchEl);
-*/
-  var newTask = document.getElementById("newTaskEntry").value,
+  var newTask = document.getElementById("newTaskEntry"),
       table = document.getElementById("outcomeTable");
+
+
+  newEntry.startTime();// first run to be sure that there is not deley in time
+  setInterval (function(){
+    newEntry.startTime();
+  }, 1000);
+
+  newEntry.execute(newTask,table);
 
   function displayTask() {
     newEntry.startTime();
@@ -19,3 +18,4 @@ window.onload = function () {
     newEntry.disableTaskEntry();
   }
 };
+

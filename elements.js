@@ -9,14 +9,15 @@ var pageElements = {
         return checkBox;
     },
     createNewDeleteButton: function (parentElement) {
-        var btn = document.createElement("i");
+        var btn = document.createElement("i"),
+            self = this;
         btn.className = 'fa fa-times fa-2x';
         btn.onclick = function () {
 
             parentElement.parentNode.removeChild(parentElement);
 
-           this.getRowsAmount();
-            disableTaskEntry();
+           self.getRowsAmount();
+           newEntry.disableTaskEntry();
 
         };
 
@@ -25,6 +26,7 @@ var pageElements = {
     },
     getRowsAmount: function() {
         var rowsAmount = document.getElementsByTagName("tr").length;
+        console.log(document.getElementById("countRows"));
         document.getElementById("countRows").innerHTML = rowsAmount;
 
         return rowsAmount;
