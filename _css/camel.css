@@ -241,8 +241,19 @@ html, body {
     cursor: pointer;
 }
 
-[class="alert alert-info"] {
-    display: none;
-
+.alert-info {
+    background: #2db34a;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    transition-property: background, border-radius;
+    transition-duration: .2s, 1s;
+    transition-timing-function: linear;
     width: 100%;
 }
+    .alert-info:hover {
+        background: #ff7b29;
+        border-radius: 50%;
+    }

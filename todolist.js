@@ -29,13 +29,13 @@ var newEntry = {
            task.appendChild(text);
            checkBox.appendChild(newCheckBox);
            removeTask.appendChild(removeBtn);
-           var info = this.getTaskDetails();
+           var info = this.getTaskDetails(task);
 
         return row;
       }
 
     },
-    getTaskDetails:function() {
+    getTaskDetails:function(task) {
     var taskDetail = document.createElement('div');
     taskDetail.className = "alert alert-info";
     taskDetail.id = 'detail' + getRowsAmount();
@@ -44,8 +44,8 @@ var newEntry = {
     taskDetail.appendChild(message);
     console.log(taskDetail);
     var row = pageElements.getRowsAmount();
-    var parent = document.querySelector("#rowNumber_" + row);
-    parent.appendChild(taskDetail);
+
+    task.appendChild(taskDetail);
 
 },
     currentDatum:function() {
