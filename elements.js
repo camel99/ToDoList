@@ -4,7 +4,7 @@ var pageElements = {
         checkBox.type = 'checkBox';
         checkBox.name = 'isDone';
         checkBox.className = 'taskCheckBox';
-        checkBox.setAttribute("onClick", "taskCrossing(event)");
+        checkBox.setAttribute("onClick","newEntry.taskCrossing(event)");
 
         return checkBox;
     },
@@ -13,9 +13,7 @@ var pageElements = {
             self = this;
         btn.className = 'fa fa-times fa-2x';
         btn.onclick = function () {
-
-            parentElement.parentNode.removeChild(parentElement);
-
+           parentElement.parentNode.removeChild(parentElement);
            self.getRowsAmount();
            newEntry.disableTaskEntry();
 
@@ -26,11 +24,8 @@ var pageElements = {
     },
     getRowsAmount: function() {
         var rowsAmount = document.getElementsByTagName("tr").length;
-        console.log(document.getElementById("countRows"));
         document.getElementById("countRows").innerHTML = rowsAmount;
 
         return rowsAmount;
-    },
-
-
+    }
 }

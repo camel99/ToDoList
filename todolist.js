@@ -9,20 +9,19 @@ var newEntry = {
      * @returns {HTMLElement} function return row that is addaed to the table
      */
   retrieveTask: function(newTask, table) {
-
-       if (newTask.length != 0) {
-          var row = table.insertRow(0),
+    if (newTask.value.length != 0) {
+        var row = table.insertRow(0),
           task = row.insertCell(0),
           taskInfo = row.insertCell(1),
           checkBox = row.insertCell(2),
           removeTask = row.insertCell(3),
           text = document.createTextNode(newTask.value),
           newCheckBox = pageElements.createNewCheckBox(),
-          removeBtn = createNewDeleteButton(row);
+          removeBtn = pageElements.createNewDeleteButton(row);
           row.className = 'newTaskEntry';
           task.className = 'taskOutcome';
           taskInfo.className = 'fa fa-info-circle fa-2x';
-          taskInfo.id = 'info' + getRowsAmount();
+          taskInfo.id = 'info' + pageElements.getRowsAmount();
           checkBox.className = 'checkBoxOutcome';
           removeTask.className = 'deleteOutcome';
 
@@ -32,40 +31,41 @@ var newEntry = {
            var info = this.getTaskDetails(task);
 
         return row;
-      }
+      } else {
+           this.createWarningMessage();
+       }
 
     },
     getTaskDetails:function(task) {
-    var taskDetail = document.createElement('div');
-    taskDetail.className = "alert alert-info";
-    taskDetail.id = 'detail' + getRowsAmount();
-    var currentDate = this.currentDatum();
-    var message = document.createTextNode('Task created: ' + currentDate);
-    taskDetail.appendChild(message);
-    console.log(taskDetail);
-    var row = pageElements.getRowsAmount();
+        var taskDetail = document.createElement('div');
+        taskDetail.className = "alert alert-info";
+        taskDetail.id = 'detail' + pageElements.getRowsAmount();
+        var currentDate = this.currentDatum();
+        var message = document.createTextNode('Task created: ' + currentDate);
+        taskDetail.appendChild(message);
 
-    task.appendChild(taskDetail);
+        task.appendChild(taskDetail);
 
 },
     currentDatum:function() {
-    function leadingZero(i) {
-        return (i < 10) ? '0' + i : i;
-    }
-    var daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    var monthMapping = ["Jan.", "Feb.", "Mar", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
-    var curDate = new Date(),
-        year = curDate.getFullYear(),
-        month = curDate.getMonth(),
-        dayNo = leadingZero(curDate.getDate()),
-        day = curDate.getDay(),
-        hour = leadingZero(curDate.getHours()),
-        min = leadingZero(curDate.getMinutes()),
-        sec = leadingZero(curDate.getSeconds()),
-        full = daysMapping[day] + ", " + dayNo + "-" + monthMapping[month] + "-" + year + " " + hour + ":" + min + ":" + sec;
+        function leadingZero(i) {
+            return (i < 10) ? '0' + i : i;
+        }
+        var daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        var monthMapping = ["Jan.", "Feb.", "Mar", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+        var curDate = new Date(),
+            year = curDate.getFullYear(),
+            month = curDate.getMonth(),
+            dayNo = leadingZero(curDate.getDate()),
+            day = curDate.getDay(),
+            hour = leadingZero(curDate.getHours()),
+            min = leadingZero(curDate.getMinutes()),
+            sec = leadingZero(curDate.getSeconds()),
+            full = daysMapping[day] + ", " + dayNo + "-" + monthMapping[month] + "-" + year + " " + hour + ":" + min + ":" + sec;
 
-    return full;
+        return full;
 },
+    // jak ta funkcje wywolac tu a nie w HTML-u
   removeAllTasks: function (){
       var parent = document.getElementById('outcomeTable');
       while (parent.firstChild) {
@@ -73,22 +73,14 @@ var newEntry = {
       }
       pageElements.getRowsAmount();
     },
-  deleteTask: function (parentElement){
-      var element = document.getElementsByClassName('fa fa-times fa-2x');
-      element.onclick = function () {
-
-        parentElement.parentNode.removeChild(parentElement);
-      };
-    },
-  clearEntry: function (elementId) {
-    document.getElementById(elementId).setAttribute("text", "");
-    },
   crossTask: function (parametr){
-      parametr.setAttribute("style", "text-decoration:line-through")
+        parametr.setAttribute("style", "text-decoration:line-through")
     },
+
   removeCrossedTask: function (parametr){
-      parametr.setAttribute("style", "text-decoration:none")
+        parametr.setAttribute("style", "text-decoration:none")
     },
+
   taskCrossing: function (e){
       var checkTask = e.target,
         x = checkTask.parentNode.parentNode.getElementsByClassName('taskOutcome')[0];
@@ -113,6 +105,7 @@ var newEntry = {
     }
 
   },
+
   isTaskBoxEmpty: function () {
       this.newTask = document.getElementById("newTaskEntry").value;
       if (this.newTask.length <= 0) {
@@ -124,6 +117,7 @@ var newEntry = {
 
       }
     },
+
   createWarningMessage: function (){
       var hasClass = document.getElementsByClassName("warningMessage").length;
       if (hasClass > 0) {
@@ -133,6 +127,7 @@ var newEntry = {
         this.isTaskBoxEmpty();
       }
     },
+
   startTime: function (){
       var today = new Date(),
           hour = today.getHours(),
@@ -144,6 +139,7 @@ var newEntry = {
       var currentTime = hour + ":" + minute + ":" + second;
       document.getElementById("currentTime").innerHTML = currentTime;
     },
+
   execute: function(newTask, table){
     var btn = document.querySelector("#submit"),
         self = this;
