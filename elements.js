@@ -1,4 +1,8 @@
 var pageElements = {
+    /**
+     * Create new checkBox and cross the completed task
+     * @returns {Element}
+     */
     createNewCheckBox: function () {
         var checkBox = document.createElement("INPUT");
         checkBox.type = 'checkBox';
@@ -8,6 +12,11 @@ var pageElements = {
 
         return checkBox;
     },
+    /**
+     * Create new delete button and remove task
+     * @param parentElement
+     * @returns {Element} newly created button
+     */
     createNewDeleteButton: function (parentElement) {
         var btn = document.createElement("i"),
             self = this;
@@ -20,8 +29,11 @@ var pageElements = {
         };
 
         return btn;
-
     },
+    /**
+     * Count added tasks
+     * @return int rowsAmount the number of added tasks
+     */
     getRowsAmount: function() {
         var rowsAmount = document.getElementsByTagName("tr").length;
         document.getElementById("countRows").innerHTML = rowsAmount;

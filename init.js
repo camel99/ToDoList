@@ -3,7 +3,7 @@ window.onload = function () {
       table = document.getElementById("outcomeTable");
 
 
-  newEntry.startTime();// first run to be sure that there is not deley in time
+  newEntry.startTime();// first run to be sure that there is no delays in current time
   setInterval (function(){
     newEntry.startTime();
   }, 1000);

@@ -6,31 +6,34 @@ var newEntry = {
      *
      * @param table indicates where the rows should appear
      *
-     * @returns {HTMLElement} function return row that is addaed to the table
+     * @returns {HTMLElement} function return row that is added to the table
      */
   retrieveTask: function(newTask, table) {
     if (newTask.value.length != 0) {
         var row = table.insertRow(0),
           task = row.insertCell(0),
-          taskInfo = row.insertCell(1),
+          infoIcon = row.insertCell(1),
           checkBox = row.insertCell(2),
           removeTask = row.insertCell(3),
           text = document.createTextNode(newTask.value),
           newCheckBox = pageElements.createNewCheckBox(),
           removeBtn = pageElements.createNewDeleteButton(row);
+        /** Creating new classes for the table elements */
           row.className = 'newTaskEntry';
           task.className = 'taskOutcome';
-          taskInfo.className = 'fa fa-info-circle fa-2x';
+          infoIcon.className = 'fa fa-info-circle fa-2x';
           checkBox.className = 'checkBoxOutcome';
           removeTask.className = 'deleteOutcome';
 
            task.appendChild(text);
            checkBox.appendChild(newCheckBox);
            removeTask.appendChild(removeBtn);
-        var info = this.getTaskDetails(task),
+        /** Creating task details */
+        var info = this.getTaskDetails(row),// appended to row instead of "td" to be sure that only done task is crossed
             self = this;
-        taskInfo.onclick = function () {
-            self.displayTaskDetails(taskInfo);
+        /**Displaying task details */
+        infoIcon.onclick = function () {
+            self.displayTaskDetails(infoIcon);
         };
 
         return row;
@@ -39,7 +42,13 @@ var newEntry = {
        }
 
     },
+    /**
+     * Creating task details
+     *
+     * @param task string indicates the new task for which details are created
+     */
     getTaskDetails:function(task) {
+        console.log(task);
         var taskDetail = document.createElement('div'),
             currentDate = this.currentDatum(),
             message = document.createTextNode('Task created: ' + currentDate);
@@ -49,6 +58,11 @@ var newEntry = {
         task.appendChild(taskDetail);
 
 },
+    /**
+     * Creating new date
+     *
+     * @returns {string} formated date: Mon, dd-M-YYYY H24:Mi:ss
+     */
     currentDatum:function() {
         function leadingZero(i) {
             return (i < 10) ? '0' + i : i;
@@ -68,21 +82,37 @@ var newEntry = {
         return full;
 },
     // jak ta funkcje wywolac tu a nie w HTML-u
+    /**
+     * Remove all tasks from the list
+     */
   removeAllTasks: function (){
       var parent = document.getElementById('outcomeTable');
       while (parent.firstChild) {
+          console.log(parent.firstChild);
         parent.removeChild(parent.firstChild);
       }
       pageElements.getRowsAmount();
     },
-  crossTask: function (parametr){
-        parametr.setAttribute("style", "text-decoration:line-through")
-    },
+    /**
+     * Crossing the done task
+     * @param newNote string indicates the newly created task
+     */
+  crossTask: function (newNote){
+      //console.log(newNote);
+        newNote.setAttribute("style", "text-decoration:line-through")
 
-  removeCrossedTask: function (parametr){
-        parametr.setAttribute("style", "text-decoration:none")
     },
-
+    /**
+     * Undo task that has been completed
+     * @param newNote string indicates the newly created task
+     */
+  removeCrossedTask: function (newNote){
+        newNote.setAttribute("style", "text-decoration:none")
+    },
+    /**
+     * Cross completed task or undo done task
+     * @param e
+     */
   taskCrossing: function (e){
       var checkTask = e.target,
         x = checkTask.parentNode.parentNode.getElementsByClassName('taskOutcome')[0];
@@ -92,6 +122,9 @@ var newEntry = {
         this.removeCrossedTask(x);
       }
     },
+    /**
+     * Function enable to add only 4 new task
+     */
   disableTaskEntry: function () {
     var rowsAmount = pageElements.getRowsAmount(),
         taskEntry = document.getElementById('newTaskEntry'),
@@ -107,7 +140,9 @@ var newEntry = {
     }
 
   },
-
+    /**
+     * Checking whether task is empty or not
+     */
   isTaskBoxEmpty: function () {
       this.newTask = document.getElementById("newTaskEntry").value;
       if (this.newTask.length <= 0) {
@@ -119,7 +154,9 @@ var newEntry = {
 
       }
     },
-
+    /**
+     * Creating new warning message if any exists
+     */
   createWarningMessage: function (){
       var hasClass = document.getElementsByClassName("warningMessage").length;
       if (hasClass > 0) {
@@ -130,7 +167,9 @@ var newEntry = {
         this.isTaskBoxEmpty();
       }
     },
-
+    /**
+     * Displaying current time
+     */
   startTime: function (){
       var today = new Date(),
           hour = today.getHours(),
@@ -142,7 +181,11 @@ var newEntry = {
       var currentTime = hour + ":" + minute + ":" + second;
       document.getElementById("currentTime").innerHTML = currentTime;
     },
-
+    /**
+     * Running functions which are triggered by "Add" button
+     * @param newTask string indicates the newly created task
+     * @param table indicates the table where the newly created task is stored
+     */
   execute: function(newTask, table){
     var btn = document.querySelector("#submit"),
         self = this;
@@ -154,16 +197,18 @@ var newEntry = {
 
     }
   },
+    /**
+     * Display or hide task details. Function is run after clickng the "info" icon
+     * @param taskInfo
+     */
     displayTaskDetails: function (taskInfo) {
         var element = taskInfo.parentNode.querySelector('.alert');
         if(element.classList.contains('active')){
-            return ;
-        } else {
-            element.classList.add('active');
-            return element.style.display = 'block';
-        }
-        //var state = 'hidden';
 
-        //return element.style.display = 'block';
+            return element.classList.remove('active');
+        } else {
+
+            return element.classList.add('active');
+        }
     }
 };
