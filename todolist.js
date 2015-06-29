@@ -21,14 +21,17 @@ var newEntry = {
           row.className = 'newTaskEntry';
           task.className = 'taskOutcome';
           taskInfo.className = 'fa fa-info-circle fa-2x';
-          taskInfo.id = 'info' + pageElements.getRowsAmount();
           checkBox.className = 'checkBoxOutcome';
           removeTask.className = 'deleteOutcome';
 
            task.appendChild(text);
            checkBox.appendChild(newCheckBox);
            removeTask.appendChild(removeBtn);
-           var info = this.getTaskDetails(task);
+        var info = this.getTaskDetails(task),
+            self = this;
+        taskInfo.onclick = function () {
+            self.displayTaskDetails(taskInfo);
+        };
 
         return row;
       } else {
@@ -37,11 +40,10 @@ var newEntry = {
 
     },
     getTaskDetails:function(task) {
-        var taskDetail = document.createElement('div');
+        var taskDetail = document.createElement('div'),
+            currentDate = this.currentDatum(),
+            message = document.createTextNode('Task created: ' + currentDate);
         taskDetail.className = "alert alert-info";
-        taskDetail.id = 'detail' + pageElements.getRowsAmount();
-        var currentDate = this.currentDatum();
-        var message = document.createTextNode('Task created: ' + currentDate);
         taskDetail.appendChild(message);
 
         task.appendChild(taskDetail);
@@ -121,6 +123,7 @@ var newEntry = {
   createWarningMessage: function (){
       var hasClass = document.getElementsByClassName("warningMessage").length;
       if (hasClass > 0) {
+
         return;
       }
       else {
@@ -150,6 +153,17 @@ var newEntry = {
       self.disableTaskEntry();
 
     }
-  }
+  },
+    displayTaskDetails: function (taskInfo) {
+        var element = taskInfo.parentNode.querySelector('.alert');
+        if(element.classList.contains('active')){
+            return ;
+        } else {
+            element.classList.add('active');
+            return element.style.display = 'block';
+        }
+        //var state = 'hidden';
 
+        //return element.style.display = 'block';
+    }
 };

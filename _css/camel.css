@@ -185,21 +185,21 @@ html, body {
     position: relative;
     min-height: 100px;
     margin-top: 30px;
-
 }
 
 .taskOutcome, .checkBoxOutcome, .deleteOutcome {
-    border-bottom: solid #CFCFD8 2px;
     width: 100%;
 }
-
+.newTaskEntry{
+    border-bottom: solid #CFCFD8 2px;
+}
 .taskOutcome {
     font-family: taskOutcomeFont;
     font-size: 30px;
     text-align: left;
 }
 
-.taskOutcome, td {
+.taskOutcome, tr {
     word-wrap: break-word;
 }
 
@@ -213,8 +213,7 @@ html, body {
     position: relative;
 }
 
-[class="fa fa-info-circle fa-2x"] {
-    border-bottom: solid #CFCFD8 2px;
+.fa-info-circle{
     width: 100%;
     opacity: 0px;
     padding: 4px;
@@ -242,18 +241,14 @@ html, body {
 }
 
 .alert-info {
-    background: #2db34a;
-    border-radius: 6px;
     cursor: pointer;
-    height: 95px;
-    line-height: 95px;
+    height: 45px;
     text-align: center;
-    transition-property: background, border-radius;
-    transition-duration: .2s, 1s;
-    transition-timing-function: linear;
     width: 100%;
+    display: none;
+    font-size: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
-    .alert-info:hover {
-        background: #ff7b29;
-        border-radius: 50%;
-    }
+.alert-info .active{
+    display: block;
+}
