@@ -31,9 +31,16 @@ var newEntry = {
         /** Creating task details */
         var info = this.getTaskDetails(row),// appended to row instead of "td" to be sure that only done task is crossed
             self = this;
+
         /**Displaying task details */
-        infoIcon.onclick = function () {
+        infoIcon.onmouseenter = function () {
             self.displayTaskDetails(infoIcon);
+            self.bulb(infoIcon);
+        };
+
+        infoIcon.onmouseleave = function () {
+            self.displayTaskDetails(infoIcon);
+            self.bulb(infoIcon);
         };
 
         return row;
@@ -54,8 +61,10 @@ var newEntry = {
             message = document.createTextNode('Task created: ' + currentDate);
         taskDetail.className = "alert alert-info";
         taskDetail.appendChild(message);
-
+        var icon = document.createElement('div');
+        icon.className = 'fa fa-lightbulb-o';
         task.appendChild(taskDetail);
+        taskDetail.appendChild(icon);
 
 },
     /**
@@ -210,5 +219,9 @@ var newEntry = {
 
             return element.classList.add('active');
         }
+    },
+    bulb: function() {
+        var bulb = document.querySelector('.fa-lightbulb-o');
+             bulb.style.color = 'red';
     }
 };

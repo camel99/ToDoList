@@ -155,7 +155,7 @@ html, body {
     border-top: ridge #E5E5E5 2px;
     background: white;
     position: fixed;
-    min-height: 300px;
+    min-height: 600px;
     padding: 20px;
 }
 
@@ -203,6 +203,7 @@ html, body {
 
 .taskOutcome, tr {
     word-wrap: break-word;
+    max-width: 300px ;
 }
 
 .taskCheckBox, .deleteOutcome {
@@ -241,17 +242,31 @@ html, body {
 
 .alert-info {
     cursor: pointer;
-    height: 75px;
-    width: 1000%;
-    text-align: justify;
+    height: 20px;
+    width: 300px;
+    text-align: center;
     display: none;
-    font-size: 20px;
+    font-size: 15px;
     font-family: Georgia, "Times New Roman", Times, serif;
-    position: relative;
-    top: -270px;
-    right: 200px;
+    position: absolute;
     float: left;
+    margin-left: -500px;
+    background: #D9EDF7;
+    text-wrap: none;
+    padding: 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 10px 9px 5px -5px rgba(217, 208, 208, 1);
+    -moz-box-shadow: 10px 9px 5px -5px rgba(217, 208, 208, 1);
+    box-shadow: 10px 9px 5px -5px rgba(217, 208, 208, 1);
 }
 .active{
     display: block;
+}
+.fa-lightbulb-o {
+    position: relative;
+    float: left;
+    color: #6E6E73;
+    font-size: 25px;
+    font-weight: bold;
+    padding-right: 4px;
 }
