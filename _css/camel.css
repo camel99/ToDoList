@@ -268,5 +268,11 @@ html, body {
     color: #6E6E73;
     font-size: 25px;
     font-weight: bold;
-    padding-right: 4px;
+    padding-right: 2px;
+    transition-property: color;
+    transition-duration: 2s, 10s;
+    transition-timing-function: linear;
+}
+.fa-lightbulb-o:hove{
+    color:yellow;
 }

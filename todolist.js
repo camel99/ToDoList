@@ -31,17 +31,17 @@ var newEntry = {
         /** Creating task details */
         var info = this.getTaskDetails(row),// appended to row instead of "td" to be sure that only done task is crossed
             self = this;
-
-        /**Displaying task details */
-        infoIcon.onmouseenter = function () {
+           /**Displaying task details */
+        //infoIcon.onmouseenter = function () {
+        infoIcon.onclick = function () {
             self.displayTaskDetails(infoIcon);
-            self.bulb(infoIcon);
+            //self.bulb('yellow');
         };
 
-        infoIcon.onmouseleave = function () {
-            self.displayTaskDetails(infoIcon);
-            self.bulb(infoIcon);
-        };
+        //infoIcon.onmouseleave = function () {
+        //    self.displayTaskDetails(infoIcon);
+            //self.bulb('red');
+        //};
 
         return row;
       } else {
@@ -55,7 +55,6 @@ var newEntry = {
      * @param task string indicates the new task for which details are created
      */
     getTaskDetails:function(task) {
-        console.log(task);
         var taskDetail = document.createElement('div'),
             currentDate = this.currentDatum(),
             message = document.createTextNode('Task created: ' + currentDate);
@@ -65,7 +64,16 @@ var newEntry = {
         icon.className = 'fa fa-lightbulb-o';
         task.appendChild(taskDetail);
         taskDetail.appendChild(icon);
-
+        var self =this;
+        taskDetail.onmouseenter = function () {
+            var bulb = document.querySelector('.fa-lightbulb-o');
+            console.log(bulb);
+            bulb.style.color = 'yellow';
+        };
+        taskDetail.onmouseleave = function () {
+            var bulb = document.querySelector('.fa-lightbulb-o');
+            bulb.style.color = '#6E6E73';
+        };
 },
     /**
      * Creating new date
@@ -222,6 +230,8 @@ var newEntry = {
     },
     bulb: function() {
         var bulb = document.querySelector('.fa-lightbulb-o');
-             bulb.style.color = 'red';
+        for (var i = 0; i < bulb.length; i++){
+            bulb.style.color = 'yellow';
+        }
     }
 };
