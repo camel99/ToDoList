@@ -32,16 +32,13 @@ var newEntry = {
         var info = this.getTaskDetails(row),// appended to row instead of "td" to be sure that only done task is crossed
             self = this;
            /**Displaying task details */
-        //infoIcon.onmouseenter = function () {
-        infoIcon.onclick = function () {
+        infoIcon.onmouseenter = function () {
             self.displayTaskDetails(infoIcon);
-            //self.bulb('yellow');
         };
 
-        //infoIcon.onmouseleave = function () {
-        //    self.displayTaskDetails(infoIcon);
-            //self.bulb('red');
-        //};
+        infoIcon.onmouseleave = function () {
+            self.displayTaskDetails(infoIcon);
+        };
 
         return row;
       } else {
@@ -64,16 +61,6 @@ var newEntry = {
         icon.className = 'fa fa-lightbulb-o';
         task.appendChild(taskDetail);
         taskDetail.appendChild(icon);
-        var self =this;
-        taskDetail.onmouseenter = function () {
-            var bulb = document.querySelector('.fa-lightbulb-o');
-            console.log(bulb);
-            bulb.style.color = 'yellow';
-        };
-        taskDetail.onmouseleave = function () {
-            var bulb = document.querySelector('.fa-lightbulb-o');
-            bulb.style.color = '#6E6E73';
-        };
 },
     /**
      * Creating new date
@@ -115,7 +102,6 @@ var newEntry = {
      * @param newNote string indicates the newly created task
      */
   crossTask: function (newNote){
-      //console.log(newNote);
         newNote.setAttribute("style", "text-decoration:line-through")
 
     },
@@ -211,7 +197,6 @@ var newEntry = {
       self.retrieveTask(newTask, table);
       pageElements.getRowsAmount();
       self.disableTaskEntry();
-
     }
   },
     /**
@@ -226,12 +211,6 @@ var newEntry = {
         } else {
 
             return element.classList.add('active');
-        }
-    },
-    bulb: function() {
-        var bulb = document.querySelector('.fa-lightbulb-o');
-        for (var i = 0; i < bulb.length; i++){
-            bulb.style.color = 'yellow';
         }
     }
 };

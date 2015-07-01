@@ -268,11 +268,18 @@ html, body {
     color: #6E6E73;
     font-size: 25px;
     font-weight: bold;
-    padding-right: 2px;
-    transition-property: color;
-    transition-duration: 2s, 10s;
-    transition-timing-function: linear;
+    -webkit-animation-name: bulbLighting;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: bulbLighting;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
-.fa-lightbulb-o:hove{
-    color:yellow;
-}
+    @-webkit-keyframes bulbLighting {
+        0% {color: #CFCFCF;}
+        20% {color: #FFFFCC;}
+        40% {color: #FFFF99;}
+        60% {color: #FFFF66;}
+        80% {color: #FFFF00;}
+        100% {color: #FF3300;}
+    }
