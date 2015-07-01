@@ -9,7 +9,11 @@ var newEntry = {
      * @returns {HTMLElement} function return row that is added to the table
      */
   retrieveTask: function(newTask, table) {
-    if (newTask.value.length != 0) {
+        var self = this;
+        if (document.getElementById('warningAlert')) {
+            self.removeWarningMessage();
+        }
+    if (newTask.value.length !== 0) {
         var row = table.insertRow(0),
           task = row.insertCell(0),
           infoIcon = row.insertCell(1),
@@ -29,8 +33,8 @@ var newEntry = {
            checkBox.appendChild(newCheckBox);
            removeTask.appendChild(removeBtn);
         /** Creating task details */
-        var info = this.getTaskDetails(row),// appended to row instead of "td" to be sure that only done task is crossed
-            self = this;
+        var info = this.getTaskDetails(row);// appended to row instead of "td" to be sure that only done task is crossed
+
            /**Displaying task details */
         infoIcon.onmouseenter = function () {
             self.displayTaskDetails(infoIcon);
@@ -92,7 +96,6 @@ var newEntry = {
   removeAllTasks: function (){
       var parent = document.getElementById('outcomeTable');
       while (parent.firstChild) {
-          console.log(parent.firstChild);
         parent.removeChild(parent.firstChild);
       }
       pageElements.getRowsAmount();
@@ -150,10 +153,14 @@ var newEntry = {
       this.newTask = document.getElementById("newTaskEntry").value;
       if (this.newTask.length <= 0) {
         var paragraph = document.createElement("P"),
-            node = document.createTextNode("* Task box cannot be empty. Please enter new task.");
-        paragraph.className = "warningMessage";
-        paragraph.appendChild(node);
-        document.getElementById("todoList").appendChild(paragraph);
+            warningMessage = document.createTextNode("* Task box cannot be empty. Please enter new task.");
+          paragraph.className = "alert-warning";
+          paragraph.id = "warningAlert";
+          paragraph.appendChild(warningMessage);
+        document.getElementById("attention").appendChild(paragraph);
+          var spiner = document.createElement('div');
+          spiner.className = 'fa fa-spinner fa-pulse';
+          paragraph.appendChild(spiner);
 
       }
     },
@@ -161,14 +168,19 @@ var newEntry = {
      * Creating new warning message if any exists
      */
   createWarningMessage: function (){
-      var hasClass = document.getElementsByClassName("warningMessage").length;
-      if (hasClass > 0) {
+      var warningAmount = document.getElementsByClassName("alert-warning").length;
+      if (warningAmount > 0) {
 
         return;
       }
       else {
         this.isTaskBoxEmpty();
       }
+    },
+    /** Removing displayed warning message if a new task is not empty */
+    removeWarningMessage: function(){
+        var warning = document.querySelector('#warningAlert');
+        warning.parentNode.removeChild(warning);
     },
     /**
      * Displaying current time
