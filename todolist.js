@@ -158,9 +158,9 @@ var newEntry = {
           paragraph.id = "warningAlert";
           paragraph.appendChild(warningMessage);
         document.getElementById("attention").appendChild(paragraph);
-          var spiner = document.createElement('div');
-          spiner.className = 'fa fa-spinner fa-pulse';
-          paragraph.appendChild(spiner);
+          //var spiner = document.createElement('div');
+          //spiner.className = 'fa fa-spinner fa-pulse';
+          //paragraph.appendChild(spiner);
 
       }
     },
