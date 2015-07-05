@@ -67,3 +67,44 @@ linki:
 http://learn.shayhowe.com/advanced-html-css/transitions-animations/
 
 http://kodcss.pl/kurs-css/lekcje/dzial-1/animacja-elementu-animation-css3
+
+
+========================================================================================
+    saveInLocalStorage_try: function() {
+        var note = document.querySelector('.taskOutcome');
+             //try {
+                setInterval(function () {
+                    var task = document.querySelector('.taskOutcome').textContent;
+                    localStorage.setItem('autosave', task);
+                }, 1000);
+            } catch (e) {
+                if (e == QUOTA_EXCEEDED_ERR) {
+                    alert('Quota exceeded!');
+                }
+            }
+            if (localStorage.getItem('autosave')) {
+                note.value = localStorage.getItem('autosave');
+            }
+        },
+
+=============================================================================================
+
+    saveInLocalStorage: function() {
+        var row = document.querySelectorAll('.newTaskEntry'),
+            vals = [];
+        try {
+            setInterval(function () {
+                for (var i = 0; i < row.length; i++) {
+                    vals.unshift(row);
+                }
+                localStorage.setItem('task', vals);
+            }, 1000);
+        } catch (e) {
+            if (e == QUOTA_EXCEEDED_ERR) {
+                alert('Quota exceeded!');
+            }
+        }
+    if(localStorage.getItem('task')) {
+        row.value = localStorage.getItem('task');
+    }
+    },

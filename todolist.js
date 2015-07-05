@@ -209,6 +209,7 @@ var newEntry = {
       self.retrieveTask(newTask, table);
       pageElements.getRowsAmount();
       self.disableTaskEntry();
+      self.saveInLocalStorage();
     }
   },
     /**
@@ -224,5 +225,39 @@ var newEntry = {
 
             return element.classList.add('active');
         }
+    },
+    /** Adding new task entry to local storage */
+    saveInLocalStorage: function() {
+        var row = document.querySelectorAll('.newTaskEntry'),
+            vals = [];
+        var details = [
+            {"row":"" }
+            //{"info":"" },
+            //{"checkBox": ""},
+            //{"delete": ""}
+            ];
+
+        for (var i = 0; i < row.length; i++) {
+            vals.unshift(row);
+        }
+        localStorage.setItem('task', vals);
+        console.dir(vals);
+        return vals;
+    },
+
+        /*
+    var task = document.querySelectorAll('.taskOutcome'),
+        vals =[];
+        for(var i = 0; i < task.length;i++){
+            var text = task[i].textContent;
+            vals.unshift(text);
+        }
+        localStorage.setItem('task',vals);
+        return vals;
+*/
+    /** Retrive task from local storage */
+     retrieveFromLocalStorage: function() {
+    var wypisz = localStorage.getItem('task');
+        document.querySelector('#how').innerHTML = wypisz;
     }
 };
