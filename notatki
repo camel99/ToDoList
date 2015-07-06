@@ -1,56 +1,30 @@
-Skip to content
-Sign up Sign in
-This repository  
-Explore
-Features
-Enterprise
-Blog
- Watch 1  Star 0  Fork 0 camel99/JavaScript_projects
- branch: without_new_re…  JavaScript_projects/notatki
-Maciej Kamela 2 days ago Displaying details message
-0 contributors
-RawBlameHistory    52 lines (47 sloc)  1.237 kB
-pytania:
-warning message usunąc parentChildRemove jak juz warning message istnieje
-2. w metodzie createNewCheckBox(paragraph) nalezy usunąć apendowanie i wtedy wywolac ta metode w tej nowo utworzonej komorce
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-#main{
-width:60%;
-border:solid black 4px blue;
-}
-#container{
-width:30%;
-height: 200px;
-padding:15px;
-border: solid red 4px;
-
-}
-#strona{
-    background-color: lightblue;
-    border:black solid 4px;
-    position:relative;
-}
-#moj{
-    background-color: lightblue;
-    border:black solid 4px;
-    position:relative;
-    float:right;
-    top: 10%;
-    width:35%;
-
-}
-</style>
-</head>
 <body>
-<div id="main">
- <div id="container">
-  <div id="strona">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut      labore et dolore magna aliqua.</div>
-  <div id="moj"> cos tu wpisalem </div>
- </div>
-</div>
+
+<p>How to create a JavaScript object array.</p>
+
+<p id="demo"></p>
+
+<script>
+var employees = [
+    {teacher1: {
+    "firstName":"John",
+    "lastName":"Doe"}
+    ,
+teacher2: {
+    "firstName":"mac",
+    "lastName":"Doe"}
+    ,
+student: {
+    "firstName":"adam",
+    "lastName":"Doe"}
+    }
+];
+document.getElementById("demo").innerHTML =
+employees[0].student.firstName;
+</script>
+
 </body>
 </html>
 
@@ -108,5 +82,20 @@ http://kodcss.pl/kurs-css/lekcje/dzial-1/animacja-elementu-animation-css3
         row.value = localStorage.getItem('task');
     }
     },
+
+            var task = document.querySelectorAll('.taskOutcome'),
+                //vals = [];
+                vals = [
+                    {"newTask": ""}
+                    ];
+            for (var i = 0; i < task.length; i++) {
+                var text = task[i].textContent;
+                var newRow = "newTask" + i;
+                vals[newRow] = text;
+            }
+            console.log(vals);
+            localStorage.setItem('task', JSON.stringify(vals));
+            var wypisz = localStorage.getItem('task');
+            console.log(JSON.parse(wypisz));
 
     http://stackoverflow.com/questions/736590/add-new-attribute-element-to-json-object-using-javascript

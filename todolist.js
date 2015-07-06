@@ -210,6 +210,7 @@ var newEntry = {
       pageElements.getRowsAmount();
       self.disableTaskEntry();
       self.saveInLocalStorage();
+      self.retrieveFromLocalStorage();
     }
   },
     /**
@@ -227,42 +228,19 @@ var newEntry = {
         }
     },
     /** Adding new task entry to local storage */
-    saveInLocalStorage: function() {
-        /*
-         var row = document.querySelectorAll('.newTaskEntry'),
-         vals = [];
-         var details = [
-         {"row":"" }
-         //{"info":"" },
-         //{"checkBox": ""},
-         //{"delete": ""}
-         ];
+    saveInLocalStorage: function () {
+        var text = document.querySelectorAll('.taskOutcome'),
+            vals = [];
+                for (var i = 0; i < text.length; i++) {
+                    var note = text[i].textContent;
+                    vals.unshift(note);
+                }
+        localStorage.setItem('task', vals);
 
-         for (var i = 0; i < row.length; i++) {
-         var newRow = row[i];
-         details.row = newRow;
-         }
-         localStorage.setItem('task', details);
-         console.dir(details);
-         return details;
-         },
-         */
-        ///*
-        var task = document.querySelectorAll('.taskOutcome'),
-            //vals = [];
-            vals = [
-                {"newTask": ""}
-          ];
-        for (var i = 0; i < task.length; i++) {
-            var text = task[i].textContent;
-            var newRow = "newTask" + i;
-            vals[newRow] = text;
+        if (localStorage.getItem('task')) {
+            vals.value = localStorage.getItem('task');
         }
-        console.log(vals);
-        localStorage.setItem('task', JSON.stringify(vals));
-        var wypisz = localStorage.getItem('task');
-        console.log(JSON.parse(wypisz));
-//*/
+
     },
     /** Retrive task from local storage */
      retrieveFromLocalStorage: function() {
