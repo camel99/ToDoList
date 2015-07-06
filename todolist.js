@@ -1,13 +1,13 @@
 
 var newEntry = {
-    /**
-     *
-     * @param newTask retrieved from  text area
-     *
-     * @param table indicates where the rows should appear
-     *
-     * @returns {HTMLElement} function return row that is added to the table
-     */
+/**
+*
+* @param newTask retrieved from  text area
+*
+* @param table indicates where the rows should appear
+*
+* @returns {HTMLElement} function return row that is added to the table
+*/
   retrieveTask: function(newTask, table) {
         var self = this;
         if (document.getElementById('warningAlert')) {
@@ -22,7 +22,7 @@ var newEntry = {
           text = document.createTextNode(newTask.value),
           newCheckBox = pageElements.createNewCheckBox(),
           removeBtn = pageElements.createNewDeleteButton(row);
-        /** Creating new classes for the table elements */
+/** Creating new classes for the table elements */
           row.className = 'newTaskEntry';
           task.className = 'taskOutcome';
           infoIcon.className = 'fa fa-info-circle fa-2x';
@@ -32,10 +32,9 @@ var newEntry = {
            task.appendChild(text);
            checkBox.appendChild(newCheckBox);
            removeTask.appendChild(removeBtn);
-        /** Creating task details */
+/** Creating task details */
         var info = this.getTaskDetails(row);// appended to row instead of "td" to be sure that only done task is crossed
-
-           /**Displaying task details */
+/**Displaying task details */
         infoIcon.onmouseenter = function () {
             self.displayTaskDetails(infoIcon);
         };
@@ -50,11 +49,11 @@ var newEntry = {
        }
 
     },
-    /**
-     * Creating task details
-     *
-     * @param task string indicates the new task for which details are created
-     */
+/**
+* Creating task details
+*
+* @param task string indicates the new task for which details are created
+*/
     getTaskDetails:function(task) {
         var taskDetail = document.createElement('div'),
             currentDate = this.currentDatum(),
@@ -66,11 +65,11 @@ var newEntry = {
         task.appendChild(taskDetail);
         taskDetail.appendChild(icon);
 },
-    /**
-     * Creating new date
-     *
-     * @returns {string} formated date: Mon, dd-M-YYYY H24:Mi:ss
-     */
+/**
+* Creating new date
+*
+* @returns {string} formated date: Mon, dd-M-YYYY H24:Mi:ss
+*/
     currentDatum:function() {
         function leadingZero(i) {
             return (i < 10) ? '0' + i : i;
@@ -90,35 +89,34 @@ var newEntry = {
         return full;
 },
     // jak ta funkcje wywolac tu a nie w HTML-u
-    /**
-     * Remove all tasks from the list
-     */
+/** Remove all tasks from the list */
   removeAllTasks: function (){
       var parent = document.getElementById('outcomeTable');
       while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
       }
-      pageElements.getRowsAmount();
+        pageElements.getRowsAmount();
+        localStorage.clear();
     },
-    /**
-     * Crossing the done task
-     * @param newNote string indicates the newly created task
-     */
+/**
+* Crossing the done task
+* @param newNote string indicates the newly created task
+*/
   crossTask: function (newNote){
         newNote.setAttribute("style", "text-decoration:line-through")
 
     },
-    /**
-     * Undo task that has been completed
-     * @param newNote string indicates the newly created task
-     */
+/**
+* Undo task that has been completed
+* @param newNote string indicates the newly created task
+*/
   removeCrossedTask: function (newNote){
         newNote.setAttribute("style", "text-decoration:none")
     },
-    /**
-     * Cross completed task or undo done task
-     * @param e
-     */
+/**
+* Cross completed task or undo done task
+* @param e
+*/
   taskCrossing: function (e){
       var checkTask = e.target,
         x = checkTask.parentNode.parentNode.getElementsByClassName('taskOutcome')[0];
@@ -128,9 +126,7 @@ var newEntry = {
         this.removeCrossedTask(x);
       }
     },
-    /**
-     * Function enable to add only 4 new task
-     */
+/**Function enable to add only 4 new task*/
   disableTaskEntry: function () {
     var rowsAmount = pageElements.getRowsAmount(),
         taskEntry = document.getElementById('newTaskEntry'),
@@ -146,9 +142,7 @@ var newEntry = {
     }
 
   },
-    /**
-     * Checking whether task is empty or not
-     */
+/**Checking whether task is empty or not*/
   isTaskBoxEmpty: function () {
       this.newTask = document.getElementById("newTaskEntry").value;
       if (this.newTask.length <= 0) {
@@ -164,9 +158,7 @@ var newEntry = {
 
       }
     },
-    /**
-     * Creating new warning message if any exists
-     */
+/** Creating new warning message if any exists */
   createWarningMessage: function (){
       var warningAmount = document.getElementsByClassName("alert-warning").length;
       if (warningAmount > 0) {
@@ -177,14 +169,12 @@ var newEntry = {
         this.isTaskBoxEmpty();
       }
     },
-    /** Removing displayed warning message if a new task is not empty */
+/** Removing displayed warning message if a new task is not empty */
     removeWarningMessage: function(){
         var warning = document.querySelector('#warningAlert');
         warning.parentNode.removeChild(warning);
     },
-    /**
-     * Displaying current time
-     */
+/** Displaying current time */
   startTime: function (){
       var today = new Date(),
           hour = today.getHours(),
@@ -196,11 +186,11 @@ var newEntry = {
       var currentTime = hour + ":" + minute + ":" + second;
       document.getElementById("currentTime").innerHTML = currentTime;
     },
-    /**
-     * Running functions which are triggered by "Add" button
-     * @param newTask string indicates the newly created task
-     * @param table indicates the table where the newly created task is stored
-     */
+/**
+* Running functions which are triggered by "Add" button
+* @param newTask string indicates the newly created task
+* @param table indicates the table where the newly created task is stored
+*/
   execute: function(newTask, table){
     var btn = document.querySelector("#submit"),
         self = this;
@@ -210,13 +200,12 @@ var newEntry = {
       pageElements.getRowsAmount();
       self.disableTaskEntry();
       self.saveInLocalStorage();
-      self.retrieveFromLocalStorage();
     }
   },
-    /**
-     * Display or hide task details. Function is run after clickng the "info" icon
-     * @param taskInfo
-     */
+/**
+* Display or hide task details. Function is run after clickng the "info" icon
+* @param taskInfo
+*/
     displayTaskDetails: function (taskInfo) {
         var element = taskInfo.parentNode.querySelector('.alert');
         if(element.classList.contains('active')){
@@ -227,24 +216,52 @@ var newEntry = {
             return element.classList.add('active');
         }
     },
-    /** Adding new task entry to local storage */
+/** Adding new task entry to local storage */
     saveInLocalStorage: function () {
-        var text = document.querySelectorAll('.taskOutcome'),
-            vals = [];
-                for (var i = 0; i < text.length; i++) {
-                    var note = text[i].textContent;
-                    vals.unshift(note);
-                }
-        localStorage.setItem('task', vals);
-
-        if (localStorage.getItem('task')) {
-            vals.value = localStorage.getItem('task');
+        var text = document.querySelectorAll('.taskOutcome');
+            //vals = [];
+        for (var i = 0; i < text.length; i++) {
+            var note = text[i].textContent;
+            //vals.unshift(note);
+            localStorage.setItem(i, note);
         }
-
+        //localStorage.setItem('task', vals);
     },
-    /** Retrive task from local storage */
-     retrieveFromLocalStorage: function() {
-    var wypisz = localStorage.getItem('task');
-        document.querySelector('#how').innerHTML = wypisz;
+/** Retrive task from local storage */
+    retrieveFromLocalStorage: function (newTask, table) {
+        var localStorageItems = localStorage.length;
+        if (localStorageItems > 0) {
+            for (var i = 0; i < localStorageItems; i++){
+                 var self = this,
+                     row = table.insertRow(0),
+                     task = row.insertCell(0),
+                     infoIcon = row.insertCell(1),
+                     checkBox = row.insertCell(2),
+                     removeTask = row.insertCell(3),
+                     text = document.createTextNode(localStorage.getItem(localStorage.key(i))),
+                     newCheckBox = pageElements.createNewCheckBox(),
+                     removeBtn = pageElements.createNewDeleteButton(row);
+/** Creating new classes for the table elements */
+            row.className = 'newTaskEntry';
+            task.className = 'taskOutcome';
+            infoIcon.className = 'fa fa-info-circle fa-2x';
+            checkBox.className = 'checkBoxOutcome';
+            removeTask.className = 'deleteOutcome';
+
+            task.appendChild(text);
+            checkBox.appendChild(newCheckBox);
+            removeTask.appendChild(removeBtn);
+/** Creating task details */
+            var info = this.getTaskDetails(row);// appended to row instead of "td" to be sure that only done task is crossed
+/**Displaying task details */
+            infoIcon.onmouseenter = function () {
+                self.displayTaskDetails(infoIcon);
+            };
+            infoIcon.onmouseleave = function () {
+                self.displayTaskDetails(infoIcon);
+                };
+            }
+        }
+    pageElements.getRowsAmount();
     }
 };
