@@ -163,7 +163,7 @@ html, body {
     top: -170px;
     float: right;
     -webkit-animation-name: warning-alert;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 0.4s;
     -webkit-animation-timing-function: linear;
     animation-name: warning-alert;
     animation-duration: 0.1s;

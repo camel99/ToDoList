@@ -99,3 +99,4 @@ http://kodcss.pl/kurs-css/lekcje/dzial-1/animacja-elementu-animation-css3
             console.log(JSON.parse(wypisz));
 
     http://stackoverflow.com/questions/736590/add-new-attribute-element-to-json-object-using-javascript
+    https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify

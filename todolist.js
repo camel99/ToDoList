@@ -217,6 +217,7 @@ var newEntry = {
         }
     },
 /** Adding new task entry to local storage */
+    /*
     saveInLocalStorage: function () {
         var text = document.querySelectorAll('.taskOutcome');
             //vals = [];
@@ -227,9 +228,26 @@ var newEntry = {
         }
         //localStorage.setItem('task', vals);
     },
+    */
+    saveInLocalStorage: function (){
+        var vals = {
+            'task': []
+        };
+    var text = document.querySelectorAll('.taskOutcome');
+        for (var i = 0; i < text.length; i++) {
+            var note = text[i].textContent;
+            vals.task.push(note);
+            //vals.unshift(note);
+        }
+            localStorage.setItem('task', JSON.stringify(vals));
+    },
+
+
 /** Retrive task from local storage */
     retrieveFromLocalStorage: function (newTask, table) {
         var localStorageItems = localStorage.length;
+        var local = JSON.parse(localStorage.getItem('task'));
+    console.log(local);
         if (localStorageItems > 0) {
             for (var i = 0; i < localStorageItems; i++){
                  var self = this,
