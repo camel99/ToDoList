@@ -191,14 +191,14 @@ var newEntry = {
 * @param newTask string indicates the newly created task
 * @param table indicates the table where the newly created task is stored
 */
-  execute: function(newTask, table){
+  execute: function(newTask, table, items, name){
     var btn = document.querySelector("#submit"),
         self = this;
         btn.onclick = function () {
       self.retrieveTask(newTask, table);
       pageElements.getRowsAmount();
       self.disableTaskEntry();
-      storeItems.saveInLocalStorage();
+      pageElements.saveInLocalStorage(items,name);
     }
   },
 /**

@@ -9,7 +9,7 @@ window.onload = function () {
   newEntry.startTime();
   }, 1000);
 
-  newEntry.execute(newTask,table);
+  newEntry.execute(newTask,table,value, name);
   newEntry.retrieveFromLocalStorage(newTask,table);
 
   function displayTask() {

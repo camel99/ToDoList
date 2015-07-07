@@ -39,5 +39,15 @@ var pageElements = {
         document.getElementById("countRows").innerHTML = rowsAmount;
 
         return rowsAmount;
+    },
+    /** Adding new task entry to local storage */
+    saveInLocalStorage: function (value, name) {
+        //var text = document.querySelectorAll('.taskOutcome');
+        var items = [];
+        for (var i = 0; i < value.length; i++) {
+            var note = value[i].textContent;
+            items.unshift(note);
+        }
+        localStorage.setItem(name, JSON.stringify(items));
     }
 }
