@@ -191,15 +191,14 @@ var newEntry = {
 * @param newTask string indicates the newly created task
 * @param table indicates the table where the newly created task is stored
 */
-  execute: function(newTask, table){
+  execute: function(newTask, table, items, name){
     var btn = document.querySelector("#submit"),
         self = this;
         btn.onclick = function () {
-
       self.retrieveTask(newTask, table);
       pageElements.getRowsAmount();
       self.disableTaskEntry();
-      self.saveInLocalStorage();
+      storeItems.saveInLocalStorage(items,name);
     }
   },
 /**
@@ -216,47 +215,21 @@ var newEntry = {
             return element.classList.add('active');
         }
     },
-/** Adding new task entry to local storage */
-    /*
-    saveInLocalStorage: function () {
-        var text = document.querySelectorAll('.taskOutcome');
-            //vals = [];
-        for (var i = 0; i < text.length; i++) {
-            var note = text[i].textContent;
-            //vals.unshift(note);
-            localStorage.setItem(i, note);
-        }
-        //localStorage.setItem('task', vals);
-    },
-    */
-    saveInLocalStorage: function (){
-        var vals = {
-            'task': []
-        };
-    var text = document.querySelectorAll('.taskOutcome');
-        for (var i = 0; i < text.length; i++) {
-            var note = text[i].textContent;
-            vals.task.push(note);
-            //vals.unshift(note);
-        }
-            localStorage.setItem('task', JSON.stringify(vals));
-    },
-
-
 /** Retrive task from local storage */
     retrieveFromLocalStorage: function (newTask, table) {
-        var localStorageItems = localStorage.length;
-        var local = JSON.parse(localStorage.getItem('task'));
-    console.log(local);
-        if (localStorageItems > 0) {
-            for (var i = 0; i < localStorageItems; i++){
+  var localStorageItems = JSON.parse(localStorage.getItem('task'));
+  var itemsAmount = localStorageItems.length;
+  console.log(itemsAmount);
+  if (itemsAmount > 0) {
+            for (var i = 0; i < itemsAmount; i++){
+              console.log(localStorageItems[i]);
                  var self = this,
                      row = table.insertRow(0),
                      task = row.insertCell(0),
                      infoIcon = row.insertCell(1),
                      checkBox = row.insertCell(2),
                      removeTask = row.insertCell(3),
-                     text = document.createTextNode(localStorage.getItem(localStorage.key(i))),
+                     text = document.createTextNode(localStorageItems[i]),
                      newCheckBox = pageElements.createNewCheckBox(),
                      removeBtn = pageElements.createNewDeleteButton(row);
 /** Creating new classes for the table elements */
