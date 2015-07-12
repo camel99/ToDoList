@@ -1,51 +1,102 @@
-pytania:
-warning message usunąc parentChildRemove jak juz warning message istnieje
-2. w metodzie createNewCheckBox(paragraph) nalezy usunąć apendowanie i wtedy wywolac ta metode w tej nowo utworzonej komorce
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-#main{
-width:60%;
-border:solid black 4px blue;
-}
-#container{
-width:30%;
-height: 200px;
-padding:15px;
-border: solid red 4px;
-
-}
-#strona{
-    background-color: lightblue;
-    border:black solid 4px;
-    position:relative;
-}
-#moj{
-    background-color: lightblue;
-    border:black solid 4px;
-    position:relative;
-    float:right;
-    top: 10%;
-    width:35%;
-
-}
-</style>
-</head>
 <body>
-<div id="main">
- <div id="container">
-  <div id="strona">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut      labore et dolore magna aliqua.</div>
-  <div id="moj"> cos tu wpisalem </div>
- </div>
-</div>
+
+<p>How to create a JavaScript object array.</p>
+
+<p id="demo"></p>
+
+<script>
+var employees = [
+    {teacher1: {
+    "firstName":"John",
+    "lastName":"Doe"}
+    ,
+teacher2: {
+    "firstName":"mac",
+    "lastName":"Doe"}
+    ,
+student: {
+    "firstName":"adam",
+    "lastName":"Doe"}
+    }
+];
+document.getElementById("demo").innerHTML =
+employees[0].student.firstName;
+</script>
+
 </body>
 </html>
 
 
 
-2. nie dziala przekreslanie
-3. nie dziala zerowanie countera - wywolanie countRows w create delete button?
 4. jak rozbic create deletButton na create i delete row?
 5. jak sa 4 wiersze to jest disabled ale jak odblokowac jak jest mniej niz 4?
-6. nie dodwac pustych wierszy?
+6. nie dziala jQuery wszystko np. animate?
+7 jak zmienic wyglad footera
+- dlaczego nie moge wywolac metody geTdetails po kliknieciu w info
+- jak zrobic kolejny wiersz i do niego wrzucic div a detailsami
+
+linki:
+http://learn.shayhowe.com/advanced-html-css/transitions-animations/
+
+http://kodcss.pl/kurs-css/lekcje/dzial-1/animacja-elementu-animation-css3
+
+
+========================================================================================
+    saveInLocalStorage_try: function() {
+        var note = document.querySelector('.taskOutcome');
+             //try {
+                setInterval(function () {
+                    var task = document.querySelector('.taskOutcome').textContent;
+                    localStorage.setItem('autosave', task);
+                }, 1000);
+            } catch (e) {
+                if (e == QUOTA_EXCEEDED_ERR) {
+                    alert('Quota exceeded!');
+                }
+            }
+            if (localStorage.getItem('autosave')) {
+                note.value = localStorage.getItem('autosave');
+            }
+        },
+
+=============================================================================================
+
+    saveInLocalStorage: function() {
+        var row = document.querySelectorAll('.newTaskEntry'),
+            vals = [];
+        try {
+            setInterval(function () {
+                for (var i = 0; i < row.length; i++) {
+                    vals.unshift(row);
+                }
+                localStorage.setItem('task', vals);
+            }, 1000);
+        } catch (e) {
+            if (e == QUOTA_EXCEEDED_ERR) {
+                alert('Quota exceeded!');
+            }
+        }
+    if(localStorage.getItem('task')) {
+        row.value = localStorage.getItem('task');
+    }
+    },
+
+            var task = document.querySelectorAll('.taskOutcome'),
+                //vals = [];
+                vals = [
+                    {"newTask": ""}
+                    ];
+            for (var i = 0; i < task.length; i++) {
+                var text = task[i].textContent;
+                var newRow = "newTask" + i;
+                vals[newRow] = text;
+            }
+            console.log(vals);
+            localStorage.setItem('task', JSON.stringify(vals));
+            var wypisz = localStorage.getItem('task');
+            console.log(JSON.parse(wypisz));
+
+    http://stackoverflow.com/questions/736590/add-new-attribute-element-to-json-object-using-javascript
+    https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
