@@ -9,7 +9,4 @@ var storeItems = {
         }
         localStorage.setItem(name, JSON.stringify(items));
     }
-// items ='.taskOutcome'
-    //storageName ='task'
-
 }
