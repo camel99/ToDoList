@@ -23,7 +23,8 @@ var pageElements = {
         btn.className = 'fa fa-times fa-2x';
         btn.onclick = function () {
            parentElement.parentNode.removeChild(parentElement);
-           self.getRowsAmount();
+           storeItems.removeItemsFromLocalStorage();
+            self.getRowsAmount();
            newEntry.disableTaskEntry();
 
         };
@@ -35,19 +36,10 @@ var pageElements = {
      * @return int rowsAmount the number of added tasks
      */
     getRowsAmount: function() {
-        var rowsAmount = document.getElementsByTagName("tr").length;
+        var rowsAmount = document.querySelectorAll('.newTaskEntry').length;
         document.getElementById("countRows").innerHTML = rowsAmount;
 
         return rowsAmount;
-    },
-    /** Adding new task entry to local storage */
-    saveInLocalStorage: function (value, name) {
-        //var text = document.querySelectorAll('.taskOutcome');
-        var items = [];
-        for (var i = 0; i < value.length; i++) {
-            var note = value[i].textContent;
-            items.unshift(note);
-        }
-        localStorage.setItem(name, JSON.stringify(items));
     }
+
 }

@@ -14,6 +14,7 @@ var newEntry = {
             self.removeWarningMessage();
         }
     if (newTask.value.length !== 0) {
+
         var row = table.insertRow(0),
           task = row.insertCell(0),
           infoIcon = row.insertCell(1),
@@ -48,6 +49,19 @@ var newEntry = {
            this.createWarningMessage();
        }
 
+    },
+/** spytaj roberta jak to zmieniæ */
+    createNewEntryRow: function(table) {
+            var row = table.insertRow(0),
+                task = row.insertCell(0),
+                infoIcon = row.insertCell(1),
+                checkBox = row.insertCell(2),
+                removeTask = row.insertCell(3)
+                //text = document.createTextNode(textValue), // her needs to be value
+                //newCheckBox =  pageElements.createNewCheckBox(),
+                //removeBtn = pageElements.createNewDeleteButton(row);
+;
+        return [row,task,infoIcon,checkBox,removeTask];
     },
 /**
 * Creating task details
@@ -96,7 +110,7 @@ var newEntry = {
         parent.removeChild(parent.firstChild);
       }
         pageElements.getRowsAmount();
-        localStorage.clear();
+        storeItems.removeItemsFromLocalStorage('task');
     },
 /**
 * Crossing the done task
@@ -215,14 +229,12 @@ var newEntry = {
             return element.classList.add('active');
         }
     },
-/** Retrive task from local storage */
-    retrieveFromLocalStorage: function (newTask, table) {
-  var localStorageItems = JSON.parse(localStorage.getItem('task'));
-  var itemsAmount = localStorageItems.length;
-  console.log(itemsAmount);
-  if (itemsAmount > 0) {
+/** Retrieve task from local storage */
+    retrieveFromLocalStorage: function (newTask, table,name) {
+  var localStorageItems = storeItems.getLocalStorageItems(name);
+  if (localStorageItems) {
+      var itemsAmount = localStorageItems.length;
             for (var i = 0; i < itemsAmount; i++){
-              console.log(localStorageItems[i]);
                  var self = this,
                      row = table.insertRow(0),
                      task = row.insertCell(0),

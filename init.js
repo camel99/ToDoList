@@ -10,7 +10,7 @@ window.onload = function () {
   }, 1000);
 
   newEntry.execute(newTask,table,value, name);
-  newEntry.retrieveFromLocalStorage(newTask,table);
+  newEntry.retrieveFromLocalStorage(newTask,table,name);
 
   function displayTask() {
     newEntry.startTime();
