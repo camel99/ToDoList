@@ -15,6 +15,9 @@ var newEntry = {
         }
     if (newTask.value.length !== 0) {
 
+        obj = createNewEntryRow();
+        obj.row
+
         var row = table.insertRow(0),
           task = row.insertCell(0),
           infoIcon = row.insertCell(1),
@@ -50,7 +53,7 @@ var newEntry = {
        }
 
     },
-/** spytaj roberta jak to zmieniæ */
+/** spytaj roberta jak to zmieniï¿½ */
     createNewEntryRow: function(table) {
             var row = table.insertRow(0),
                 task = row.insertCell(0),
@@ -61,7 +64,11 @@ var newEntry = {
                 //newCheckBox =  pageElements.createNewCheckBox(),
                 //removeBtn = pageElements.createNewDeleteButton(row);
 ;
-        return [row,task,infoIcon,checkBox,removeTask];
+        return {
+            row: row,
+            task: task,
+            infoIcon: infoIcon
+        }[row,task,infoIcon,checkBox,removeTask];
     },
 /**
 * Creating task details
