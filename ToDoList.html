@@ -9,40 +9,43 @@
 <body>
 <header id="header">
     <h3>ToDo List</h3>
-        <div>
-            <span id="currentTime"></span>
-        </div>
+
+    <div>
+        <span id="currentTime"></span>
+    </div>
     <div class="clear"></div>
 </header>
 <div id="attention"></div>
 <div class="mainContainer">
     <div id="form">
-     <form action="ToDoList.html">
-     <div id="todoList">
-        <textarea  placeholder="Please enter your task..."  id="newTaskEntry"></textarea>
-        <input type="button" id="submit" class ="btn submit" value="Add">
-         <input type="button" id="removeAllTask" class="btn remove-all" value="Clear" onclick="newEntry.removeAllTasks()">
-         <div style="clear:both"></div>
-    </div>
+        <form action="ToDoList.html">
+            <div id="todoList">
+                <textarea placeholder="Please enter your task..." id="newTaskEntry"></textarea>
+                <input type="button" id="submit" class="btn submit" value="Add">
+                <input type="button" id="removeAllTask" class="btn remove-all" value="Clear"
+                       onclick="newEntry.removeAllTasks()">
 
-         <div id="clear"></div>
-         <div class="outcomeTable">
-             <table id="outcomeTable">
-             </table>
-         </div>
-         </form>
-        </div>
+                <div style="clear:both"></div>
+            </div>
+
+            <div id="clear"></div>
+            <div class="outcomeTable">
+                <table id="outcomeTable">
+                </table>
+            </div>
+        </form>
     </div>
+</div>
 <div id="localStorage"></div>
 <div>
     <input type="button" id="tester" value="tester" onclick="newEntry.createRows()">
 </div>
-    <h1 id="what" >
-        <p id="how">
+<h1 id="what">
+    <p id="how">
 
-        </p>
-    </h1>
-    <p id="countRows" onclick="clearWarningMessage()"></p>
+    </p>
+</h1>
+<p id="countRows" onclick="clearWarningMessage()"></p>
 </div>
 <footer class="footer">
     <p id="footerMessage">

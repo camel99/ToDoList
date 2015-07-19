@@ -1,5 +1,5 @@
 window.onload = function () {
-  var newTask = document.getElementById("newTaskEntry"),
+  var
       table = document.getElementById("outcomeTable"),
       value = '.taskOutcome',
       name = 'task';
@@ -9,15 +9,8 @@ window.onload = function () {
   newEntry.startTime();
   }, 1000);
 
-  newEntry.execute(newTask,table,value, name);
-  newEntry.retrieveFromLocalStorage(newTask,table,name);
+  newEntry.execute(table,value, name);
+  storeItems.retrieveFromLocalStorage(table,name);
 
-  function displayTask() {
-    newEntry.startTime();
-    newEntry.createWarningMessage();
-    newEntry.retrieveTask(newTask, table);
-    pageElements.getRowsAmount();
-    newEntry.disableTaskEntry();
-  }
 };
 

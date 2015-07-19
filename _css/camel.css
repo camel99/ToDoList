@@ -1,7 +1,7 @@
-    /* http://meyerweb.com/eric/tools/css/reset/
-       v2.0 | 20110126
-       License: none (public domain)
-    */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -150,8 +150,9 @@ html, body {
     box-sizing: border-box;
     border: 0;
 }
+
 .alert-warning {
-    border:black 1px solid;
+    border: black 1px solid;
     height: 40px;
     width: 20%;
     display: inline-block;
@@ -168,16 +169,23 @@ html, body {
     animation-name: warning-alert;
     animation-duration: 0.1s;
 }
-    @-webkit-keyframes warning-alert {
-        0% {top: -190px;}
-        100% {top: -170px;}
+
+@-webkit-keyframes warning-alert {
+    0% {
+        top: -190px;
     }
-.fa-spinner{
-    position:relative;
-    float:left;
+    100% {
+        top: -170px;
+    }
+}
+
+.fa-spinner {
+    position: relative;
+    float: left;
     font-size: 25px;
     color: #828282;
 }
+
 .footer {
     width: 100%;
     height: 100%;
@@ -220,10 +228,12 @@ html, body {
 .taskOutcome, .checkBoxOutcome, .deleteOutcome {
     width: 100%;
 }
-.newTaskEntry{
+
+.newTaskEntry {
     border-bottom: solid #CFCFD8 2px;
     position: relative;
 }
+
 .taskOutcome {
     font-family: taskOutcomeFont;
     font-size: 20px;
@@ -232,7 +242,7 @@ html, body {
 
 .taskOutcome, tr {
     word-wrap: break-word;
-    max-width: 300px ;
+    max-width: 300px;
 }
 
 .taskCheckBox, .deleteOutcome {
@@ -243,7 +253,7 @@ html, body {
     cursor: pointer;
 }
 
-.fa-info-circle{
+.fa-info-circle {
     width: 100%;
     opacity: 0px;
     padding: 4px;
@@ -288,9 +298,11 @@ html, body {
     -moz-box-shadow: 10px 9px 5px -5px rgba(217, 208, 208, 1);
     box-shadow: 10px 9px 5px -5px rgba(217, 208, 208, 1);
 }
-.active{
+
+.active {
     display: block;
 }
+
 .fa-lightbulb-o {
     position: relative;
     float: left;
@@ -304,7 +316,12 @@ html, body {
     animation-duration: 0.8s;
     animation-iteration-count: infinite;
 }
-    @-webkit-keyframes bulbLighting {
-        0% {color: #CFCFCF;}
-        100% {color: #FFFF00;}
+
+@-webkit-keyframes bulbLighting {
+    0% {
+        color: #CFCFCF;
     }
+    100% {
+        color: #FFFF00;
+    }
+}
