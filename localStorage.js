@@ -45,7 +45,7 @@ var storeItems = {
             }
         }
         pageElements.getCheckBoxState();
-        //newEntry.taskCrossing(event);
+        pageElements.crossedAllCheckedTasks();
         pageElements.getRowsAmount();
     },
     getCheckBoxState: function () {

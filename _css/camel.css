@@ -110,7 +110,6 @@ html, body {
     margin-top: 45px;
     margin-bottom: 245px;
     background-color: white;
-
 }
 
 #form {
@@ -160,7 +159,6 @@ html, body {
     background-color: #D47070;
     border-radius: 5px;
     box-shadow: -1px 1px 7px 1px #E0EBEB;
-    position: relative;
     top: -170px;
     float: right;
     -webkit-animation-name: warning-alert;
@@ -168,6 +166,7 @@ html, body {
     -webkit-animation-timing-function: linear;
     animation-name: warning-alert;
     animation-duration: 0.1s;
+    position: relative;
 }
 
 @-webkit-keyframes warning-alert {

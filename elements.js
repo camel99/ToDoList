@@ -62,5 +62,15 @@ var pageElements = {
                 checkBoxes[k].checked = true;
             }
         }
+    },
+    /** If checkBox has crossed data-state then set style line-through to the task */
+    crossedAllCheckedTasks: function() {
+        var tasks = document.querySelectorAll('.taskOutcome'),
+            checkBox =  document.querySelectorAll('.taskCheckBox');
+        for(var i = 0; i < tasks.length; i++){
+            if(checkBox[i].getAttribute('data-state') === 'crossed'){
+                tasks[i].setAttribute("style", "text-decoration:line-through");
+            }
+        }
     }
 }

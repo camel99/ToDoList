@@ -24,7 +24,7 @@ var newEntry = {
 
     displayNewTask: function (newTask, table, state) {
         var self = this;
-        if (newTask) {
+        if (newTask.replace(/\s/g, '')) {
             var newCells = self.createNewEntryRow(table);
             newCells.text = document.createTextNode(newTask);
             newCells.newCheckBox = pageElements.createNewCheckBox(state);
@@ -46,7 +46,7 @@ var newEntry = {
 
             return newCells.row;
         } else {
-            self.createWarningMessage();
+            self.displayWarningMessage();
         }
     },
     /** Create new row and add classes name for row's cells */
@@ -133,6 +133,7 @@ var newEntry = {
         }
         pageElements.getRowsAmount();
         storeItems.removeItemsFromLocalStorage('task');
+        storeItems.removeItemsFromLocalStorage('btnState');
     },
     /**
      * Crossing the done task
@@ -186,9 +187,9 @@ var newEntry = {
 
     },
     /**Checking whether task is empty or not*/
-    isTaskBoxEmpty: function () {
+    createWarningMessage: function () {
         this.newTask = document.getElementById("newTaskEntry").value;
-        if (this.newTask.length <= 0) {
+        if (this.newTask.replace(/\s/g, '') == 0) {
             var paragraph = document.createElement("P"),
                 warningMessage = document.createTextNode("* Task box cannot be empty. Please enter new task.");
             paragraph.className = "alert-warning";
@@ -202,10 +203,10 @@ var newEntry = {
         }
     },
     /** Creating new warning message if any exists */
-    createWarningMessage: function () {
+    displayWarningMessage: function () {
         var warningAmount = document.getElementsByClassName("alert-warning").length;
         if (warningAmount === 0) {
-            this.isTaskBoxEmpty();
+            this.createWarningMessage();
         }
     },
     /** Removing displayed warning message if a new task is not empty */
